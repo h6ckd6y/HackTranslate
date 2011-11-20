@@ -1,3 +1,7 @@
-HackTranslateTranslateBundle_homepage:
-    pattern:  /hello/{name}
+HackTranslateTranslateBundle_index:
+    pattern:  /
     defaults: { _controller: HackTranslateTranslateBundle:Default:index }
+
+HackTranslateTranslateBundle_auth:
+  pattern: /authenticate
+  defaults: {_controller: HackTranslateTranslateBundle:OAuth:auth }
