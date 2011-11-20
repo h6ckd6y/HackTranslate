@@ -37,8 +37,17 @@ jQuery(document).ready(function($) {
             $.ajax({
                 url : '/tweet/' + data,
                 success : function(localData) {
-                    console.log(localData);
-                    $successMessage.fadeIn();
+                    $successMessage.fadeIn(200, function(){
+                        $('#tweetbox').val('').animate({
+                            height : 20
+                        }, 120);
+                    });
+                    if (localData['user']['profile_image_url'] == undefined
+                        || localData['user']['screen_name'] == undefined
+                        || localData['created_at'] == undefined
+                    ) {
+                        return;
+                    }
                     var html  = '<div class="well tweet new-tweet lang-"' + toLang +'">';
                         html += '<img src="' + localData['user']['profile_image_url'] + '" alt="" />';
                         html += '<p><a href="">' + localData['user']['screen_name'] + '</a> | ';
