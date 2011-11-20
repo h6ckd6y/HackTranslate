@@ -19,3 +19,9 @@
     background:  #D1FFFE;
     border-color: #ABEBEA;
 }
+
+.read-lang-select {
+    float: right;
+    clear: left;
+    margin-top: 4px;
+}
