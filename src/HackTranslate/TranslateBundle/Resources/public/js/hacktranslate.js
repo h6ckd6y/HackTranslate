@@ -1,5 +1,7 @@
 jQuery(document).ready(function($) {
 
+    var $sourceLang = $('input#sourceLang');
+
     // grow the textarea
     $('#tweetbox').focus(function(e){
         var $this = $(this);
@@ -15,11 +17,30 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('#translate').click(function() {
-        translate('it','en','test');
+    $('#tweet-btn').click(function(e){
+        e.preventDefault();
+        var tweetText = $('#tweetbox').val(),
+            fromLang = 'en',
+            toLang = $('#tweet-lang-select option:selected').val();
+
+        translate(toLang, fromLang, tweetText, function(data) {
+            $.ajax({
+                url : '/tweet/' + data,
+                success : function(localData) {
+                     console.log(localData);
+                }
+            })
+        });
+
     });
 
-    function translate(toLanguage, fromLanguage, textToTranslate) {
+    $('#tweet-lang-select').change(function(){
+        var $this = $(this);
+        console.log($sourceLang.children('option'));
+    });
+
+
+    function translate(toLanguage, fromLanguage, textToTranslate, callback) {
         var p = {};
 	    p.appid = '1DEA59FFA7DC652C652134FF0AC9F7170411CC5C';
 	    p.to = toLanguage;
@@ -32,12 +53,7 @@ jQuery(document).ready(function($) {
             dataType: 'jsonp',
             jsonp: 'oncomplete',
             jsonpCallback: 'ajaxTranslateCallback',
-            complete: function(request, status) {
-                alert('complete: '+status);
-            },
-            success: function(data, status) {
-                alert('success: data-'+data+',status-'+status);
-            },
+            success: callback,
             error: function(request, status, error) {
                 alert('error: status-'+status+',desc-'+error);
             }
@@ -45,6 +61,6 @@ jQuery(document).ready(function($) {
     }
 
     function ajaxTranslateCallback(response) {
-	    alert('ajaxTranslateCallback('+response+')');
+	    
     }
 });

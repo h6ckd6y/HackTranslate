@@ -4,14 +4,16 @@
     <div class="row">
         <div class="span16">
             <form method="post" action="">
+                <input type="hidden" name="sourceLang" id="sourceLang" value="en" />
                 <h3>What's happening?</h3>
                 <p>
                     <textarea rows="7" cols="30" id="tweetbox"></textarea>
                 </p>
-                    <a class="btn">Tweet</a>
+                    <a class="btn" id="tweet-btn">Tweet</a>
                     <select name="tweet-lang-select" id="tweet-lang-select">
                         <option value="en">English</option>
-                        <option value="cy">Cymru</option>
+                        <option value="it">Italian</option>
+                        <option value="ja">Japanese</option>
                     </select>
             </form>
             <p>&nbsp;</p>
@@ -24,7 +26,8 @@
             <h4>Select a language the tweets should be</h4>
             <select name="read-lang-select" id="read-lang-select">
                 <option value="en">English</option>
-                <option value="cy">Cymru</option>
+                <option value="it">Italian</option>
+                <option value="ja">Japanese</option>
             </select>
             <p>&nbsp;</p>
         </div>
