@@ -1,6 +1,16 @@
 jQuery(document).ready(function($) {
 
-    var $sourceLang = $('input#sourceLang');
+    var $sourceLang = $('input#sourceLang'),
+        $successMessage = $('.alert-message');
+
+    // initially hide the notification
+    $successMessage.hide();
+
+    // close the notification div
+    $successMessage.children('a.close').click(function(e){
+        e.preventDefault();
+        $successMessage.fadeOut();
+    });
 
     // grow the textarea
     $('#tweetbox').focus(function(e){
@@ -27,7 +37,8 @@ jQuery(document).ready(function($) {
             $.ajax({
                 url : '/tweet/' + data,
                 success : function(localData) {
-                     console.log(localData);
+                    console.log(localData);
+                    $successMessage.fadeIn();
                 }
             })
         });
