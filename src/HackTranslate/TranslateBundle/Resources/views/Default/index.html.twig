@@ -30,20 +30,20 @@
         </div>
     </div>
 
+
+
     <div class="row">
         <div class="span16">
 
-            <div class="well tweet">
-                <p>This is a tweet</p>
+{% for tweet in tweets %}
+    <div class="well tweet">
+                <p>{{ tweet.text }}</p>
             </div>
+{% endfor %}
 
-            <div class="well tweet">
-                <p>This is a tweet</p>
-            </div>
 
-            <div class="well tweet">
-                <p>This is a tweet</p>
-            </div>
+          
+
         </div>
     </div>
 
