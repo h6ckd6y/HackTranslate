@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
     }).blur(function(){
         var $this = $(this);
         if ($this.height() == 120 && $this.val() == '') {
-            $this.animate({ height:20}, 200);
+            $this.animate({height:20}, 200);
         }
     });
 
@@ -66,6 +66,19 @@ jQuery(document).ready(function($) {
     $('#tweet-lang-select').change(function(){
         var $this = $(this);
         console.log($sourceLang.children('option'));
+    });
+
+    $('.read-lang-select').change(function(){
+        var $this = $(this);
+
+        var tweetText = $this.parent().parent().find('span.tweet').text(),
+        fromLang = 'en',
+        toLang = $this.children('option:selected').val();
+
+        translate(toLang, fromLang, tweetText, function(data) {
+            $this.parent().parent().find('span.tweet').text(data);
+        });
+
     });
 
 

@@ -33,25 +33,6 @@
     </div>
 
     <div class="row">
-        <div class="span16">
-            <h4>Select a language the tweets should be</h4>
-            <select name="read-lang-select" id="read-lang-select">
-                <option value="en">English</option>
-                        <option value="it">Italian</option>
-                        <option value="ja">Japanese</option>
-                        <option value="th">Thai</option>
-                        <option value="ru">Russian</option>
-                        <option value="pl">Polish</option>
-                        <option value="ar">Arabic</option>
-                        <option value="he">Hebrew</option>
-            </select>
-            <p>&nbsp;</p>
-        </div>
-    </div>
-
-
-
-    <div class="row">
         <div class="span16 timeline">
         {% for tweet in tweets %}
             <div class="well tweet lang-{{ tweet.user.lang }}">
@@ -60,6 +41,18 @@
                     <a href="">{{ tweet.user.screen_name }}</a> | <span class="date">{{ tweet.created_at }}</span>
                 </p>
                 <span class="tweet">{{ tweet.text }}</span>
+                <div class="langselect">
+                <select name="read-lang-select" class="read-lang-select" id="read-lang-select{{tweet.user.id}}">
+                        <option value="en">English</option>
+                        <option value="it">Italian</option>
+                        <option value="ja">Japanese</option>
+                        <option value="th">Thai</option>
+                        <option value="ru">Russian</option>
+                        <option value="pl">Polish</option>
+                        <option value="ar">Arabic</option>
+                        <option value="he">Hebrew</option>
+                </select>
+                </div>
                 <div style="clear: both;"></div>
             </div>
         {% endfor %}
