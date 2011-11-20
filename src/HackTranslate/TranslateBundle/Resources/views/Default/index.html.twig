@@ -1,7 +1,19 @@
 {% extends 'HackTranslateTranslateBundle::layout.html.twig' %}
-
-
 {% block content %}
 
+    <div class="row">
+        <div class="span12">
+            <form method="post" action="">
+                <h3>What's happening?</h3>
+                <p>
+                    <textarea rows="7" cols="30" id="tweetbox"></textarea>
+                </p>
+                <p class="tweetbox-meta">
+                    <a class="btn">Tweet</a>
+                    <a class="btn" href="" id="translateit">Translate</a>
+                </p>
+            </form>
+        </div>
+    </div>
 
 {% endblock %}

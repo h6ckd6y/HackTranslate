@@ -1,5 +1,20 @@
 jQuery(document).ready(function($) {
 
+    // grow the textarea
+    $('#tweetbox').focus(function(e){
+        var $this = $(this);
+        if ($this.height() == 20) {
+            $this.animate({
+                height : '120px'
+            }, 400);
+        }
+    }).blur(function(){
+        var $this = $(this);
+        if ($this.height() == 120 && $this.val() == '') {
+            $this.animate({ height:20}, 200);
+        }
+    });
+
     $('#translate').click(function() {
         translate('it','en','test');
     });
