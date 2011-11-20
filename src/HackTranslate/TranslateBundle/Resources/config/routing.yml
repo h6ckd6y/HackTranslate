@@ -5,3 +5,7 @@ HackTranslateTranslateBundle_index:
 HackTranslateTranslateBundle_auth:
   pattern: /authenticate
   defaults: {_controller: HackTranslateTranslateBundle:OAuth:auth }
+
+HackTranslateTranslateBundle_send:
+  pattern: /tweet/{text}
+  defaults: {_controller: HackTranslateTranslateBundle:Tweet:send }
