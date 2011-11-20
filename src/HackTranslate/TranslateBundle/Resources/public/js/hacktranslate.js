@@ -39,6 +39,15 @@ jQuery(document).ready(function($) {
                 success : function(localData) {
                     console.log(localData);
                     $successMessage.fadeIn();
+                    var html  = '<div class="well tweet new-tweet lang-"' + toLang +'">';
+                        html += '<img src="' + localData['user']['profile_image_url'] + '" alt="" />';
+                        html += '<p><a href="">' + localData['user']['screen_name'] + '</a> | ';
+                        html += '<span class="date">' + localData['created_at'] + '</span></p>';
+                        html += '<span class="tweet">' + localData['text'] + '</span>';
+                        html += '<div style="clear: both;"></div>';
+                        html += '</div>',
+                    $('.timeline').children('div:first').before(html);
+                    $('.new-tweet').hide().fadeIn(400);
                 }
             })
         });
